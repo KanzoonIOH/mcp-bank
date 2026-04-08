@@ -1,0 +1,12 @@
+[project]
+name = "mcp-bank"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=3.2.0",
+]
+
+[dependency-groups]
+dev = []
