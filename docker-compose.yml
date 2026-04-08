@@ -1,13 +1,26 @@
 services:
-    mcp-bank:
+    mcp-bank-syariah:
         build: .
         ports:
-            - "7777:8000"
+            - "7777:7777"
         environment:
+            BANK_MODE: syariah
             FASTMCP_TRANSPORT: streamable-http
             FASTMCP_HOST: 0.0.0.0
-            FASTMCP_PORT: 8000
-        restart: unless-stopped
+            FASTMCP_PORT: 7777
+        restart: on-failure:3
+        networks:
+            - shared-net
+    mcp-bank-conventional:
+        build: .
+        ports:
+            - "7778:7778"
+        environment:
+            BANK_MODE: conventional
+            FASTMCP_TRANSPORT: streamable-http
+            FASTMCP_HOST: 0.0.0.0
+            FASTMCP_PORT: 7778
+        restart: on-failure:3
         networks:
             - shared-net
 networks:
