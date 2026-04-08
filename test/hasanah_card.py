@@ -2,7 +2,7 @@ import asyncio
 
 from fastmcp import Client
 
-client = Client("http://localhost:8000/mcp")
+client = Client("http://localhost:7777/mcp")
 
 # ── n8n metadata injected by the AI Agent node on every call ─────────────────
 N8N_META = {
