@@ -5,7 +5,7 @@ All rates, fees, and limits are defined in config/hasanah_card.py.
 Edit that file to update any value without touching the tool logic here.
 """
 
-# from typing import Literal
+from typing import Literal
 
 from fastmcp import FastMCP
 
@@ -69,10 +69,8 @@ def calculate_monthly_fee(card_limit: float) -> dict:
 def calculate_cash_rebate(
     outstanding: float,
     card_limit: float,
-    # payment_timing: Literal["before_due_date", "after_due_date"],
-    payment_timing: str,
-    # payment_type: Literal["full", "partial"],
-    payment_type: str,
+    payment_timing: Literal["before_due_date", "after_due_date"],
+    payment_type: Literal["full", "partial"],
     num_days: int = 0,
     transaction_amount: float = 0.0,
 ) -> dict:
@@ -165,10 +163,8 @@ def calculate_cash_rebate(
 def calculate_net_monthly_fee(
     card_limit: float,
     outstanding: float,
-    # payment_timing: Literal["before_due_date", "after_due_date"],
-    payment_timing: str,
-    # payment_type: Literal["full", "partial"],
-    payment_type: str,
+    payment_timing: Literal["before_due_date", "after_due_date"],
+    payment_type: Literal["full", "partial"],
     num_days: int = 0,
     transaction_amount: float = 0.0,
 ) -> dict:
@@ -388,8 +384,7 @@ def calculate_cash_advance(
 
 @hasanah_card.tool()
 def calculate_billing_statement_fee(
-    # delivery_method: Literal["email", "physical"],
-    delivery_method: str,
+    delivery_method: Literal["email", "physical"],
 ) -> dict:
     """
     Calculate the billing statement delivery fee for BSI Hasanah Card.
@@ -417,8 +412,7 @@ def calculate_billing_statement_fee(
 
 @hasanah_card.tool()
 def get_card_fee_info(
-    # card_type: Literal["classic", "gold", "platinum"],
-    card_type: str,
+    card_type: Literal["classic", "gold", "platinum"],
 ) -> dict:
     """
     Get fee structure information for each BSI Hasanah Card type.
@@ -467,10 +461,8 @@ def get_card_fee_info(
 def calculate_full_billing_summary(
     card_limit: float,
     outstanding: float,
-    # payment_timing: Literal["before_due_date", "after_due_date"],
-    payment_timing: str,
-    # payment_type: Literal["full", "partial"],
-    payment_type: str,
+    payment_timing: Literal["before_due_date", "after_due_date"],
+    payment_type: Literal["full", "partial"],
     num_days: int = 0,
     transaction_amount: float = 0.0,
 ) -> dict:
