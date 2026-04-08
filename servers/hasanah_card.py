@@ -71,8 +71,8 @@ def calculate_cash_rebate(
     card_limit: float,
     payment_timing: Literal["before_due_date", "after_due_date"],
     payment_type: Literal["full", "partial"],
-    num_days: int = 0,
-    transaction_amount: float = 0.0,
+    num_days: int,
+    transaction_amount: float,
 ) -> dict:
     """
     Calculate the cash rebate for BSI Hasanah Card.
@@ -165,8 +165,8 @@ def calculate_net_monthly_fee(
     outstanding: float,
     payment_timing: Literal["before_due_date", "after_due_date"],
     payment_type: Literal["full", "partial"],
-    num_days: int = 0,
-    transaction_amount: float = 0.0,
+    num_days: int,
+    transaction_amount: float,
 ) -> dict:
     """
     Calculate the net monthly fee (ujrah bersih) for BSI Hasanah Card.
@@ -226,7 +226,7 @@ def calculate_net_monthly_fee(
 
 
 @hasanah_card.tool()
-def calculate_minimum_payment(total_bill: float, overlimit_amount: float = 0.0) -> dict:
+def calculate_minimum_payment(total_bill: float, overlimit_amount: float) -> dict:
     """
     Calculate the minimum payment for BSI Hasanah Card.
 
@@ -329,7 +329,7 @@ def calculate_smart_spending_installment(
 def calculate_cash_advance(
     withdrawal_amount: float,
     card_limit: float,
-    num_withdrawals: int = 1,
+    num_withdrawals: int,
 ) -> dict:
     """
     Calculate cash advance (tarik tunai) fees for BSI Hasanah Card.
@@ -463,8 +463,8 @@ def calculate_full_billing_summary(
     outstanding: float,
     payment_timing: Literal["before_due_date", "after_due_date"],
     payment_type: Literal["full", "partial"],
-    num_days: int = 0,
-    transaction_amount: float = 0.0,
+    num_days: int,
+    transaction_amount: float,
 ) -> dict:
     """
     Calculate a complete billing summary for BSI Hasanah Card.
