@@ -79,7 +79,6 @@ def calculate_cash_rebate(
 
     Cash rebate is an appreciation from the bank that reduces the monthly fee.
     It is calculated as: (Outstanding - Limit) × eq_rate
-    or alternatively: transaction_amount × num_days × (rate × 12/365)
 
     The equivalent rate depends on payment timing and type:
     - Before due date + full payment:    1.75%
@@ -130,18 +129,20 @@ def calculate_cash_rebate(
     else:
         rebate_balance = 0.0
 
-    # Alternative formula: transaction × days × (rate × 12/365)
-    rebate_transaction = 0.0
-    if transaction_amount > 0 and num_days > 0:
-        rebate_transaction = transaction_amount * num_days * (eq_rate * 12 / 365)
+    # ⚠️ Shouldnt be used, its conventional calculation
+    # # Alternative formula: transaction × days × (rate × 12/365)
+    # rebate_transaction = 0.0
+    # if transaction_amount > 0 and num_days > 0:
+    #     rebate_transaction = transaction_amount * num_days * (eq_rate * 12 / 365)
 
-    # Use the transaction-based formula if inputs are provided, otherwise balance-based
-    if transaction_amount > 0 and num_days > 0:
-        cash_rebate = rebate_transaction
-        method = "transaction_based: nominal × days × (rate × 12/365)"
-    else:
-        cash_rebate = rebate_balance
-        method = "balance_based: (limit - outstanding) × eq_rate"
+    # ⚠️ Shouldnt be used, its conventional calculation
+    # # Use the transaction-based formula if inputs are provided, otherwise balance-based
+    # if transaction_amount > 0 and num_days > 0:
+    #     cash_rebate = rebate_transaction
+    #     method = "transaction_based: nominal × days × (rate × 12/365)"
+    # else:
+    cash_rebate = rebate_balance
+    method = "balance_based: (limit - outstanding) × eq_rate"
 
     eq_rate_pct = round(eq_rate * 100, 4)
     return {
